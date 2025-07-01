@@ -1,0 +1,10 @@
+{
+  "snore": {
+    "sounds": [
+      {
+        "name": "snoresound:snoring",
+        "volume": 1.0
+      }
+    ]
+  }
+}
