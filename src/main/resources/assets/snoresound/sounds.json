@@ -4,6 +4,14 @@
       {
         "name": "snoresound:snoring",
         "volume": 1.0
+      },
+      {
+        "name": "snoresound:shortSnoring1",
+        "volume": 1.0
+      },
+      {
+        "name": "snoresound:shortSnoring2",
+        "volume": 1.0
       }
     ]
   }
