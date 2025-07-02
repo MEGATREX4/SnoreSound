@@ -10,19 +10,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/**
- * Mixin for PlayerEntity to add snoring sound functionality.
- * 
- * This mixin injects into the player's tick method to check if the player
- * is sleeping and handle snoring sounds accordingly. The injection occurs at
- * the end of the tick method to avoid interfering with normal player behavior.
- * 
- * Players use the adult pitch range (0.8-1.3) regardless of their actual size,
- * as Minecraft players don't have a traditional "child" state like villagers do.
- * The snoring system treats all players as adults for audio purposes.
- * 
- * @see MTSnoreSound#handleEntity(LivingEntity)
- */
 @Environment(EnvType.CLIENT)
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin {
@@ -39,9 +26,6 @@ public abstract class PlayerEntityMixin {
     @Inject(method = "tick", at = @At("TAIL"))
     private void mtsnore$playSnore(CallbackInfo ci) {
         PlayerEntity player = (PlayerEntity) (Object) this;
-        if (player.isSleeping()) {
-            MTSnoreSound.LOGGER.debug("Player {} is sleeping, calling handleEntity", player.getName().getString());
-        }
         MTSnoreSound.handleEntity((LivingEntity) (Object) this);
     }
 }
